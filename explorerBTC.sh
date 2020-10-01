@@ -27,16 +27,16 @@ inspect_transaction_url="https://www.blockchain.com/es/btc/tx/"
 inspect_address_url="https://www.blockchain.com/es/btc/address/"
 
 function helpPanel(){
-    echo -e "\n\n${turquoiseColour}[${yellowColour}!${turquoiseColour}]${purpleColour} Uso: ./explorerBTC${endColour}"
-    for i in $(seq 1 100); do echo -ne "${purpleColour}-"; done; echo -ne "${endColour}"
-    echo -e "\n${grayColour}Opciones:${endColour}"
-    echo -e "\n\t${turquoiseColour}[${yellowColour}-e${turquoiseColour}]${grayColour} Modo exploración${endColour}"
-    echo -e "\t\t${redColour}unconfirmed_transactions${grayColour}:\t Listar transacciones no confirmadas; default: 100 resultados${endColour}"
+    echo -e "\n${turquoiseColour}[${yellowColour}!${turquoiseColour}]${grayColour} USO:\n\t ${purpleColour}./explorerBTC${endColour}"
+    for i in $(seq 1 115); do echo -ne "${purpleColour}-"; done; echo -ne "${endColour}"
+    echo -e "\n${grayColour}OPCIONES:${endColour}"
+    echo -e "\t${turquoiseColour}[${yellowColour}-e${turquoiseColour}]${grayColour} Modo exploración${endColour}"
+    echo -e "\t\t${redColour}unconfirmed_transactions${grayColour}:\t Listar transacciones no confirmadas; resultados por default: 100${endColour}"
     echo -e "\t\t${redColour}inspect${grayColour}:\t\t\t Inspeccionar un hash de transacción${endColour}"
     echo -e "\t\t${redColour}address${grayColour}:\t\t\t Inspeccionar una transacción de dirección${endColour}"
-    echo -e "\n\t${turquoiseColour}[${yellowColour}-n${turquoiseColour}]${grayColour} Limitar el número de resultados${blueColour} (Ejemplo: ./explorerBTC -e unconfirmed_trasactions -n 10)${endColour}"
-    echo -e "\n\t${turquoiseColour}[${yellowColour}-i${turquoiseColour}]${grayColour} Proporcionar el identificador de transacción${blueColour} (Ejemplo ./explorerBTC -e inspect -i 2sd12d34f1s1123)${endColour}"
-    echo -e "\n\t${turquoiseColour}[${yellowColour}-a${turquoiseColour}]${grayColour} Proporcionar una dirección de transacción${blueColour} (Ejemplo ./explorerBTC -e address -a adsd34a3a2as4da2)${endColour}"
+    echo -e "\n\t${turquoiseColour}[${yellowColour}-n${turquoiseColour}]${grayColour} Limitar el número de resultados${purpleColour} (Ejemplo: ./explorerBTC -e unconfirmed_trasactions -n 10)${endColour}"
+    echo -e "\n\t${turquoiseColour}[${yellowColour}-i${turquoiseColour}]${grayColour} Proporcionar el identificador de transacción${purpleColour} (Ejemplo: ./explorerBTC -e inspect -i 2sd12d34f1s1123hjty543sdf)${endColour}"
+    echo -e "\n\t${turquoiseColour}[${yellowColour}-a${turquoiseColour}]${grayColour} Proporcionar una dirección de transacción${purpleColour} (Ejemplo: ./explorerBTC -e address -a adsd34a3a2as4da2lugdf565f)${endColour}"
     echo -e "\n\t${turquoiseColour}[${yellowColour}-h${turquoiseColour}]${grayColour} Mostrar este panel de ayuda${endColour}\n"
 
     tput cnorm; exit 1
@@ -295,7 +295,7 @@ function inspectAddress(){
 banner
 validates
 
-parameter_counter=0; while getopts "e:n:i:a:h:" arg; do
+parameter_counter=0; while getopts "e:n:i:a:h" arg; do
     case $arg in
         e) exploration_mode=$OPTARG; let parameter_counter+=1;;
         n) number_output=$OPTARG; let parameter_counter+=1;;
@@ -321,5 +321,7 @@ else
         inspectTransaction $inspect_transaction
     elif [ "$(echo $exploration_mode)" == "address" ]; then
         inspectAddress $inspect_address
+    else
+        helpPanel
     fi
 fi
