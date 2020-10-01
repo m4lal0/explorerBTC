@@ -8,10 +8,9 @@
 ┗━━━┛┗┛┗┛┃┏━┛┗━┛┗━━┛┗┛━┗━━┛┗┛━┗━━━┛━┗━━┛━┗━━━┛
 ━━━━━━━━━┃┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ━━━━━━━━━┗┛━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-<br>
-**¿Quieres saber cuánto dinero en Bitcoin se mueve por el mundo?**
 </p>
 
+**¿Quieres saber cuánto dinero en Bitcoin se mueve por el mundo?**
 La herramienta explorerBTC hecha en Bash es ideal para explorar las transacciones en el servicio de Bitcoin, conocido como Blockchain (blockchain.com).
 
 ## ¿Cómo funciona la herramienta?
