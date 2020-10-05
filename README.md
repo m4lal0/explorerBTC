@@ -16,7 +16,8 @@ La herramienta explorerBTC hecha en Bash es ideal para explorar las transaccione
 ## ¿Cómo funciona la herramienta?
 Para ejecutar la herramienta colocamos lo siguiente:
 ```bash
-# ./explorerBTC
+chmod +x explorerBTC.sh
+./explorerBTC.sh
 ```
 Tras ejecutar la herramienta, veremos el menú de ayuda:
 
