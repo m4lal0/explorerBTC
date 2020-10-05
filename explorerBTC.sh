@@ -27,17 +27,21 @@ inspect_transaction_url="https://www.blockchain.com/es/btc/tx/"
 inspect_address_url="https://www.blockchain.com/es/btc/address/"
 
 function helpPanel(){
-    echo -e "\n${turquoiseColour}[${yellowColour}!${turquoiseColour}]${grayColour} USO:\n\t ${purpleColour}./explorerBTC${endColour}"
+    echo -e "\n${turquoiseColour}[${yellowColour}!${turquoiseColour}]${grayColour} USO:\n\t ${purpleColour}./explorerBTC [Opción]${endColour}"
     for i in $(seq 1 115); do echo -ne "${purpleColour}-"; done; echo -ne "${endColour}"
     echo -e "\n${grayColour}OPCIONES:${endColour}"
     echo -e "\t${turquoiseColour}[${yellowColour}-e${turquoiseColour}]${grayColour} Modo exploración${endColour}"
     echo -e "\t\t${redColour}unconfirmed_transactions${grayColour}:\t Listar transacciones no confirmadas; resultados por default: 100${endColour}"
     echo -e "\t\t${redColour}inspect${grayColour}:\t\t\t Inspeccionar un hash de transacción${endColour}"
     echo -e "\t\t${redColour}address${grayColour}:\t\t\t Inspeccionar una transacción de dirección${endColour}"
-    echo -e "\n\t${turquoiseColour}[${yellowColour}-n${turquoiseColour}]${grayColour} Limitar el número de resultados${purpleColour} (Ejemplo: ./explorerBTC -e unconfirmed_trasactions -n 10)${endColour}"
-    echo -e "\n\t${turquoiseColour}[${yellowColour}-i${turquoiseColour}]${grayColour} Proporcionar el identificador de transacción${purpleColour} (Ejemplo: ./explorerBTC -e inspect -i 2sd12d34f1s1123hjty543sdf)${endColour}"
-    echo -e "\n\t${turquoiseColour}[${yellowColour}-a${turquoiseColour}]${grayColour} Proporcionar una dirección de transacción${purpleColour} (Ejemplo: ./explorerBTC -e address -a adsd34a3a2as4da2lugdf565f)${endColour}"
-    echo -e "\n\t${turquoiseColour}[${yellowColour}-h${turquoiseColour}]${grayColour} Mostrar este panel de ayuda${endColour}\n"
+    echo -e "\t${turquoiseColour}[${yellowColour}-n${turquoiseColour}]${grayColour} Limitar el número de resultados${endColour}"
+    echo -e "\t${turquoiseColour}[${yellowColour}-i${turquoiseColour}]${grayColour} Proporcionar el identificador de transacción${endColour}"
+    echo -e "\t${turquoiseColour}[${yellowColour}-a${turquoiseColour}]${grayColour} Proporcionar una dirección de transacción${endColour}"
+    echo -e "\t${turquoiseColour}[${yellowColour}-h${turquoiseColour}]${grayColour} Mostrar este panel de ayuda${endColour}"
+    echo -e "\n${grayColour}EJEMPLOS:${endColour}"
+    echo -e "\t${grayColour}./explorerBTC ${yellowColour}-e ${redColour}unconfirmed_trasactions ${yellowColour}-n ${grayColour}10${endColour}"
+    echo -e "\t${grayColour}./explorerBTC ${yellowColour}-e ${redColour}inspect ${yellowColour}-i ${grayColour}2sd12d34f1s1123hjty543sdf${endColour}"
+    echo -e "\t${grayColour}./explorerBTC ${yellowColour}-e ${redColour}address ${yellowColour}-a ${grayColour}adsd34a3a2as4da2lugdf565f${endColour}\n"
 
     tput cnorm; exit 1
 }
@@ -51,36 +55,14 @@ function banner(){
 }
 
 function validates(){
-sudo dpkg -s html2text > /dev/null 2>&1
-if [ $? -ne 0 ]; then
-    echo -e "${turquoiseColour}[${yellowColour}!${turquoiseColour}]${redColour} No tienes instalado la aplicación ${grayColour}html2text${redColour}...iniciando la instalación${endColour}"
-    sudo apt-get install html2text -y > /dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        echo -e "${turquoiseColour}[${redColour}✘${turquoiseColour}]${redColour} No se pudo instalar html2text, debes instalarlo de manera manual.${endColour}"
-        tput cnorm
-        exit 1
-    else
-        echo -e "${turquoiseColour}[${greenColour}✔${turquoiseColour}]${greenColour} Finalizado la instalación de ${grayColour}html2text${endColour}"
-        echo -e "\n${turquoiseColour}[${yellowColour}!${turquoiseColour}]${grayColour} Debes reiniciar la ejecución del programa.${endColour}"
-        tput cnorm
-        exit 0
+    if [ ! -x "$(command -v html2text)" ];then
+            echo -e "${turquoiseColour}[${yellowColour}!${turquoiseColour}]${redColour} html2text no detectado...Instalando${endColour}"
+            sudo apt-get install html2text -y  > /dev/null 2>&1
     fi
-fi
-sudo dpkg -s bc > /dev/null 2>&1
-if [ $? -ne 0 ]; then
-    echo -e "${turquoiseColour}[${yellowColour}!${turquoiseColour}]${redColour} No tienes instalado la aplicación ${grayColour}bc${redColour}...iniciando la instalación${endColour}"
-    sudo apt-get install bc -y > /dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        echo -e "${turquoiseColour}[${redColour}✘${turquoiseColour}]${redColour} No se pudo instalar bc, debes instalarlo de manera manual.${endColour}"
-        tput cnorm
-        exit 1
-    else
-        echo -e "${turquoiseColour}[${greenColour}✔${turquoiseColour}]${greenColour} Finalizado la instalación de ${grayColour}bc${endColour}"
-        echo -e "\n${turquoiseColour}[${yellowColour}!${turquoiseColour}]${grayColour} Debes reiniciar la ejecución del programa.${endColour}"
-        tput cnorm
-        exit 0
+    if [ ! -x "$(command -v bc)" ];then
+            echo -e "${turquoiseColour}[${yellowColour}!${turquoiseColour}]${redColour} bc no detectado...Instalando${endColour}"
+            sudo apt-get install bc -y  > /dev/null 2>&1
     fi
-fi
 }
 
 function printTable(){
