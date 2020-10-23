@@ -2,20 +2,64 @@
 
 # By @M4lal0
 
-### Colours
-greenColour="\e[0;32m\033[1m"
-redColour="\e[0;31m\033[1m"
-blueColour="\e[0;34m\033[1m"
-yellowColour="\e[0;33m\033[1m"
-purpleColour="\e[0;35m\033[1m"
-turquoiseColour="\e[0;36m\033[1m"
-grayColour="\e[0;37m\033[1m"
-endColour="\033[0m\e[0m"
+# Regular Colors
+Black='\033[0;30m'      # Black
+Red='\033[0;31m'        # Red
+Green='\033[0;32m'      # Green
+Yellow='\033[0;33m'     # Yellow
+Blue='\033[0;34m'       # Blue
+Purple='\033[0;35m'     # Purple
+Cyan='\033[0;36m'       # Cyan
+White='\033[0;97m'      # White
+Color_Off='\033[0m'     # Text Reset
+
+# Additional colors
+LGray='\033[0;37m'      # Ligth Gray
+DGray='\033[0;90m'      # Dark Gray
+LRed='\033[0;91m'       # Ligth Red
+LGreen='\033[0;92m'     # Ligth Green
+LYellow='\033[0;93m'    # Ligth Yellow
+LBlue='\033[0;94m'      # Ligth Blue
+LPurple='\033[0;95m'    # Light Purple
+LCyan='\033[0;96m'      # Ligth Cyan
+
+# Bold
+BBlack='\033[1;30m'     # Black
+BGray='\033[1;37m'		# Gray
+BRed='\033[1;31m'       # Red
+BGreen='\033[1;32m'     # Green
+BYellow='\033[1;33m'    # Yellow
+BBlue='\033[1;34m'      # Blue
+BPurple='\033[1;35m'    # Purple
+BCyan='\033[1;36m'      # Cyan
+BWhite='\033[1;37m'     # White
+
+# Underline
+UBlack='\033[4;30m'     # Black
+UGray='\033[4;37m'		# Gray
+URed='\033[4;31m'       # Red
+UGreen='\033[4;32m'     # Green
+UYellow='\033[4;33m'    # Yellow
+UBlue='\033[4;34m'      # Blue
+UPurple='\033[4;35m'    # Purple
+UCyan='\033[4;36m'      # Cyan
+UWhite='\033[4;37m'     # White
+
+# Background
+On_Black='\033[40m'     # Black
+On_Red='\033[41m'       # Red
+On_Green='\033[42m'     # Green
+On_Yellow='\033[43m'    # Yellow
+On_Blue='\033[44m'      # Blue
+On_Purple='\033[45m'    # Purple
+On_Cyan='\033[46m'      # Cyan
+On_White='\033[47m'     # White
+
 
 trap ctrl_c INT
 
 function ctrl_c(){
-    echo -e "\n${turquoiseColour}[${yellowColour}!${turquoiseColour}]${redColour} Saliendo...\n${endColour}"
+    echo -e "\n${Cyan}[${Yellow}!${Cyan}]${Red} Saliendo...\n${Color_Off}"
     rm ut.t* money* total_entrada_salida.tmp entradas.tmp salidas.tmp address_information.tmp bitcoin-to-dollars.tmp 2>/dev/null
     tput cnorm
     exit 1
@@ -27,40 +71,40 @@ inspect_transaction_url="https://www.blockchain.com/es/btc/tx/"
 inspect_address_url="https://www.blockchain.com/es/btc/address/"
 
 function helpPanel(){
-    echo -e "\n${turquoiseColour}[${yellowColour}!${turquoiseColour}]${grayColour} USO:\n\t ${purpleColour}./explorerBTC [Opción]${endColour}"
-    for i in $(seq 1 115); do echo -ne "${purpleColour}-"; done; echo -ne "${endColour}"
-    echo -e "\n${grayColour}OPCIONES:${endColour}"
-    echo -e "\t${turquoiseColour}[${yellowColour}-e${turquoiseColour}]${grayColour} Modo exploración${endColour}"
-    echo -e "\t\t${redColour}unconfirmed_transactions${grayColour}:\t Listar transacciones no confirmadas; resultados por default: 100${endColour}"
-    echo -e "\t\t${redColour}inspect${grayColour}:\t\t\t Inspeccionar un hash de transacción${endColour}"
-    echo -e "\t\t${redColour}address${grayColour}:\t\t\t Inspeccionar una transacción de dirección${endColour}"
-    echo -e "\t${turquoiseColour}[${yellowColour}-n${turquoiseColour}]${grayColour} Limitar el número de resultados${endColour}"
-    echo -e "\t${turquoiseColour}[${yellowColour}-i${turquoiseColour}]${grayColour} Proporcionar el identificador de transacción${endColour}"
-    echo -e "\t${turquoiseColour}[${yellowColour}-a${turquoiseColour}]${grayColour} Proporcionar una dirección de transacción${endColour}"
-    echo -e "\t${turquoiseColour}[${yellowColour}-h${turquoiseColour}]${grayColour} Mostrar este panel de ayuda${endColour}"
-    echo -e "\n${grayColour}EJEMPLOS:${endColour}"
-    echo -e "\t${grayColour}./explorerBTC ${yellowColour}-e ${redColour}unconfirmed_trasactions ${yellowColour}-n ${grayColour}10${endColour}"
-    echo -e "\t${grayColour}./explorerBTC ${yellowColour}-e ${redColour}inspect ${yellowColour}-i ${grayColour}2sd12d34f1s1123hjty543sdf${endColour}"
-    echo -e "\t${grayColour}./explorerBTC ${yellowColour}-e ${redColour}address ${yellowColour}-a ${grayColour}adsd34a3a2as4da2lugdf565f${endColour}\n"
+    echo -e "\n${Cyan}[${Yellow}!${Cyan}]${BGray} USO:\n\t ${Purple}./explorerBTC [Opción]${Color_Off}"
+    for i in $(seq 1 115); do echo -ne "${Purple}-"; done; echo -ne "${Color_Off}"
+    echo -e "\n${BGray}OPCIONES:${Color_Off}"
+    echo -e "\t${Cyan}[${Yellow}-e${Cyan}]${LGray} Modo exploración${Color_Off}"
+    echo -e "\t\t${Red}unconfirmed_transactions${LGray}:\t Listar transacciones no confirmadas; resultados por default: 100${Color_Off}"
+    echo -e "\t\t${Red}inspect${LGray}:\t\t\t Inspeccionar un hash de transacción${Color_Off}"
+    echo -e "\t\t${Red}address${LGray}:\t\t\t Inspeccionar una transacción de dirección${Color_Off}"
+    echo -e "\t${Cyan}[${Yellow}-n${Cyan}]${LGray} Limitar el número de resultados${Color_Off}"
+    echo -e "\t${Cyan}[${Yellow}-i${Cyan}]${LGray} Proporcionar el identificador de transacción${Color_Off}"
+    echo -e "\t${Cyan}[${Yellow}-a${Cyan}]${LGray} Proporcionar una dirección de transacción${Color_Off}"
+    echo -e "\t${Cyan}[${Yellow}-h${Cyan}]${LGray} Mostrar este panel de ayuda${Color_Off}"
+    echo -e "\n${BGray}EJEMPLOS:${Color_Off}"
+    echo -e "\t${LGray}./explorerBTC ${Yellow}-e ${Red}unconfirmed_trasactions ${Yellow}-n ${LGray}10${Color_Off}"
+    echo -e "\t${LGray}./explorerBTC ${Yellow}-e ${Red}inspect ${Yellow}-i ${LGray}2sd12d34f1s1123hjty543sdf${Color_Off}"
+    echo -e "\t${LGray}./explorerBTC ${Yellow}-e ${Red}address ${Yellow}-a ${LGray}adsd34a3a2as4da2lugdf565f${Color_Off}\n"
 
     tput cnorm; exit 1
 }
 
 function banner(){
-    echo -e "\t${blueColour} ___       _ __  _                     ${greenColour}  ___  _____   ___ ${endColour}"
-    echo -e "\t${blueColour}| __|__ __| '_ \| | ___  _ _  ___  _ _ ${greenColour} | _ )|_   _| / __|${endColour}"
-    echo -e "\t${blueColour}| _| \ \ /| .__/| |/ _ \| '_|/ -_)| '_|${greenColour} | _ \  | |  | (__ ${endColour}"
-    echo -e "\t${blueColour}|___|/_\_\|_|   |_|\___/|_|  \___||_|  ${greenColour} |___/  |_|   \___|${endColour}"
-    echo -e "\n\tExplorador de transacciones de Bitcoin${redColour} --[ By @m4lal0 ] --${endColour}\n"
+    echo -e "\t${BBlue} ___       _ __  _                     ${BGreen}  ___  _____   ___ ${Color_Off}"
+    echo -e "\t${BBlue}| __|__ __| '_ \| | ___  _ _  ___  _ _ ${BGreen} | _ )|_   _| / __|${Color_Off}"
+    echo -e "\t${BBlue}| _| \ \ /| .__/| |/ _ \| '_|/ -_)| '_|${BGreen} | _ \  | |  | (__ ${Color_Off}"
+    echo -e "\t${BBlue}|___|/_\_\|_|   |_|\___/|_|  \___||_|  ${BGreen} |___/  |_|   \___|${Color_Off}"
+    echo -e "\n\tExplorador de transacciones de Bitcoin${Red} --[ By @m4lal0 ] --${Color_Off}\n"
 }
 
 function validates(){
     if [ ! -x "$(command -v html2text)" ];then
-            echo -e "${turquoiseColour}[${yellowColour}!${turquoiseColour}]${redColour} html2text no detectado...Instalando${endColour}"
+            echo -e "${Cyan}[${Yellow}!${Cyan}]${Red} html2text no detectado... Instalando${Color_Off}"
             sudo apt-get install html2text -y  > /dev/null 2>&1
     fi
     if [ ! -x "$(command -v bc)" ];then
-            echo -e "${turquoiseColour}[${yellowColour}!${turquoiseColour}]${redColour} bc no detectado...Instalando${endColour}"
+            echo -e "${Cyan}[${Yellow}!${Cyan}]${Red} bc no detectado... Instalando${Color_Off}"
             sudo apt-get install bc -y  > /dev/null 2>&1
     fi
 }
@@ -181,12 +225,12 @@ function unconfirmedTransactions(){
     echo "\$$(printf "%'.d\n" $(cat money.tmp))" >> amount.table
 
     if [ "$(cat ut.table | wc -l)" != "1" ]; then
-        echo -ne "${grayColour}"
+        echo -ne "${BGray}"
         printTable '_' "$(cat ut.table)"
-        echo -ne "${endColour}"
-        echo -ne "${greenColour}"
+        echo -ne "${Color_Off}"
+        echo -ne "${Green}"
         printTable '_' "$(cat amount.table)"
-        echo -ne "${endColour}"
+        echo -ne "${Color_Off}"
         rm ut.* money* amount.table 2>/dev/null
         tput cnorm; exit 0
     else
@@ -206,9 +250,9 @@ function inspectTransaction(){
         curl -s "${inspect_transaction_url}${inspect_transaction_hash}" | html2text | grep -E "Total entradas|Total de salida" -A 1 | grep -v -E "Total entradas|Total de salida" | xargs | tr ' ' '_' | sed 's/_BTC/ BTC/g' >> total_entrada_salida.tmp
     done
 
-    echo -ne "${grayColour}"
+    echo -ne "${BGray}"
     printTable '_' "$(cat total_entrada_salida.tmp)"
-    echo -ne "${endColour}"
+    echo -ne "${Color_Off}"
     rm total_entrada_salida.tmp 2>/dev/null
 
     echo "Dirección (Entradas)_Valor" > entradas.tmp
@@ -217,9 +261,9 @@ function inspectTransaction(){
         curl -s "${inspect_transaction_url}${inspect_transaction_hash}" | html2text | grep "Entradas" -A 500 | grep "Salidas" -B 500 | grep "Direcci" -A 3 | grep -v -E "Direcci|Valor|\--" | awk 'NR%2{printf "%s ",$0;next;}1' | awk '{print $1 "_" $2 " " $3}' >> entradas.tmp
     done
 
-    echo -ne "${greenColour}"
+    echo -ne "${Green}"
     printTable '_' "$(cat entradas.tmp)"
-    echo -ne "${endColour}"
+    echo -ne "${Color_Off}"
     rm entradas.tmp 2>/dev/null
 
     echo "Dirección (Salidas)_Valor" > salidas.tmp
@@ -228,9 +272,9 @@ function inspectTransaction(){
         curl -s "${inspect_transaction_url}${inspect_transaction_hash}" | html2text | grep "Salidas" -A 500 | grep "***** Hab" -B 500 | grep "Direcci" -A 3 | grep -v -E "Direcci|Valor|\--" | awk 'NR%2{printf "%s ",$0;next;}1' | awk '{print $1 "_" $2 " " $3}' >> salidas.tmp
     done
 
-    echo -ne "${redColour}"
+    echo -ne "${Red}"
     printTable '_' "$(cat salidas.tmp)"
-    echo -ne "${endColour}"
+    echo -ne "${Color_Off}"
     rm salidas.tmp 2>/dev/null
 
     tput cnorm
@@ -242,9 +286,9 @@ function inspectAddress(){
     echo "Transacciones realizadas_Cantidad total recibida (BTC)_Cantidad total enviada (BTC)_Saldo total en la cuenta (BTC)" > address_information.tmp
     curl -s "${inspect_address_url}${address_hash}" | html2text | grep -E "Transacciones|Total Recibidas|Cantidad total enviada|Saldo final" -A 1 | head -n -2 | grep -v -E "Transacciones|Total Recibidas|Cantidad total enviada|Saldo final" | xargs | tr ' ' '_' | sed 's/_BTC/ BTC/g' >> address_information.tmp
 
-    echo -ne "${grayColour}"
+    echo -ne "${LGray}"
     printTable '_' "$(cat address_information.tmp)"
-    echo -ne "${endColour}"
+    echo -ne "${Color_Off}"
     rm address_information.tmp 2>/dev/null
 
     bitcoin_value=$(curl -s "https://es.cointelegraph.com/bitcoin-price-index" | html2text | grep "Last Price" | head -n 1 | awk 'NF{print $NF}' | tr -d ',')
@@ -266,9 +310,9 @@ function inspectAddress(){
     rm address_information.tmp 2>/dev/null  && mv address_information2.tmp address_information.tmp
     sed '1iTransacciones realizadas_Cantidad total recibidas (USD)_Cantidad total enviada (USD)_Saldo actual en la cuenta (USD)' -i address_information.tmp
 
-    echo -ne "${yellowColour}"
+    echo -ne "${Yellow}"
     printTable '_' "$(cat address_information.tmp)"
-    echo -ne "${endColour}"
+    echo -ne "${Color_Off}"
 
     rm address_information.tmp bitcoin-to-dollars.tmp 2>/dev/null
     tput cnorm
