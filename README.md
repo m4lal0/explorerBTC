@@ -1,4 +1,12 @@
 # explorerBTC
+
+[![GitHub top language](https://img.shields.io/github/languages/top/m4lal0/explorerBTC?logo=gnu-bash&style=flat-square)](#)
+[![GitHub repo size](https://img.shields.io/github/repo-size/m4lal0/explorerBTC?logo=webpack&style=flat-square)](#)
+[![Debian Supported](https://img.shields.io/badge/Debian-Supported-blue?style=flat-square&logo=debian)](#)
+[![Kali Supported](https://img.shields.io/badge/Kali-Supported-blue?style=flat-square&logo=linux)](#)
+[![Parrot Supported](https://img.shields.io/badge/Parrot-Supported-blue?style=flat-square&logo=linux)](#)
+[![By](https://img.shields.io/badge/By-m4lal0-green?style=flat-square&logo=github)](#)
+
 <p align="center" style="color:#4169e1">
 ┏━━━┓━━━━━━━━┏┓━━━━━━━━━━━━━━━┏━━┓━┏━━━━┓┏━━━┓
 ┃┏━━┛━━━━━━━━┃┃━━━━━━━━━━━━━━━┃┏┓┃━┃┏┓┏┓┃┃┏━┓┃
@@ -10,8 +18,10 @@
 ━━━━━━━━━┗┛━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 </p>
 
-**¿Quieres saber cuánto dinero en Bitcoin se mueve por el mundo?**
-La herramienta explorerBTC hecha en Bash es ideal para explorar las transacciones en el servicio de Bitcoin, conocido como Blockchain (blockchain.com).
+<p align="center" style="color:#4169e1">
+¿Quieres saber cuánto dinero en Bitcoin se mueve por el mundo?
+</p>
+La herramienta explorerBTC hecha en Bash es ideal para explorar las transacciones en el servicio de Bitcoin, conocido como Blockchain (**blockchain.com**).
 
 ## ¿Cómo funciona la herramienta?
 Para ejecutar la herramienta colocamos lo siguiente:
